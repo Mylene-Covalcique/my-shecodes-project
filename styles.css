@@ -1,0 +1,83 @@
+body {
+  background-image: url("oneway.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1,
+form,
+.col {
+  text-align: center;
+}
+
+h1,
+h2,
+.day {
+  color: #c4a99f;
+}
+
+h1 {
+  margin: 15px 0;
+  font-family: "Homemade Apple", cursive;
+  font-size: 35px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.container {
+  width: 600px;
+  opacity: 0.9;
+  margin-top: 110px;
+}
+
+.card-body {
+  background-color: #edf7f4;
+  border-radius: 20px;
+}
+
+.col-6 {
+  text-align: center;
+}
+
+span.date-time {
+  position: relative;
+  left: -15px;
+}
+
+#weather {
+  position: relative;
+  left: -49px;
+  font-weight: bold;
+}
+
+span.humidity {
+  position: relative;
+  left: -22px;
+}
+
+span.wind {
+  position: relative;
+  left: -25px;
+}
+
+.temp {
+  margin-top: 15px;
+}
+
+.fa-cloud-sun {
+  font-size: 100px;
+}
+
+.fa-sun,
+.fa-cloud,
+.fa-cloud-showers-heavy {
+  font-size: 36px;
+}
+
+#CF {
+  font-size: 15px;
+  position: relative;
+  top: -11px;
+}
