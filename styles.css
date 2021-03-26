@@ -81,3 +81,10 @@ span.wind {
   position: relative;
   top: -11px;
 }
+
+#code-line {
+  position: relative;
+  left: 430px;
+  color: #ede05a;
+  font-size: 15px;
+}
