@@ -1,106 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Forecast</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+let now = new Date();
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/c70c4bc8ba.js"
-      crossorigin="anonymous"
-    ></script>
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap"
-      rel="stylesheet"
-    />
+let dayEdit = document.querySelector("#day");
+let day = days[now.getDay()];
+dayEdit.innerHTML = `<strong>${day}</strong>`;
 
-    <link rel="stylesheet" href="style.css" class="css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="card">
-        <div class="card-body">
-          <h1>Weather Forecast</h1>
-          <form>
-            <input
-              type="text"
-              placeholder="Enter a city"
-              size="30"
-              id="city-input"
-            />
-            <input type="submit" value="Search" />
-            <input type="submit" value="Current" id="current-location" />
-          </form>
-          <hr />
-          <div class="row">
-            <div class="col-6">
-              <h2 id="city">Paris</h2>
-              <span class="date-time">
-                <span id="day">Monday</span>
-                <span class="hour-minutes">
-                  <span id="hour">14</span>:<span id="minutes">00</span></span
-                ></span
-              >
-              <br />
-              <span id="weather">Sunny</span>
-              <br />
-              <span class="humidity">
-                Humidity: <span id="humid">0</span> %</span
-              >
-              <br />
-              <span class="wind"> Wind: <span id="wind">0</span> km/h </span>
-            </div>
-            <div class="col-6">
-              <h2 class="main-temp">
-                <span id="temp">19</span>
-                <span id="CF">
-                  <span id="celcius"><a href="#">°C</a></span> |
-                  <span id="fahrenheit"><a href="#">°F</a></span>
-                </span>
-              </h2>
-              <i class="fas fa-cloud-sun"></i>
-            </div>
-          </div>
-          <hr />
-          <div class="row">
-            <div class="col">
-              <p class="day">Tuesday</p>
-              <i class="fas fa-sun"></i>
-              <p class="temp">20°</p>
-            </div>
-            <div class="col">
-              <p class="day">Wednesday</p>
-              <i class="fas fa-cloud"></i>
-              <p class="temp">15°</p>
-            </div>
-            <div class="col">
-              <p class="day">Thursday</p>
-              <i class="fas fa-sun"></i>
-              <p class="temp">18°</p>
-            </div>
-            <div class="col">
-              <p class="day">Friday</p>
-              <i class="fas fa-sun"></i>
-              <p class="temp">19°</p>
-            </div>
-            <div class="col">
-              <p class="day">Saturday</p>
-              <i class="fas fa-cloud-showers-heavy"></i>
-              <p class="temp">13°</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script src="/Users/mylene.covalcique/Desktop/SheCodes/Plus Workshops/indexJS.js"></script>
-  </body>
-</html>
+let hourEdit = document.querySelector("#hour");
+let hour = now.getHours();
+hourEdit.innerHTML = `<strong>${hour}</strong>`;
+if (hour < 10) {
+  hour = `0${hour}`;
+}
+
+let minuteEdit = document.querySelector("#minutes");
+let minute = now.getMinutes();
+minuteEdit.innerHTML = `<strong>${minute}</strong>`;
+if (minute < 10) {
+  minute = `0${minute}`;
+}
+
+function showTemperature(response) {
+  let currentTemp = Math.round(response.data.main.temp);
+  let changeTemp = document.querySelector("#temp");
+  changeTemp.innerHTML = currentTemp;
+  let currentHumidity = Math.round(response.data.main.humidity);
+  let changeHumidity = document.querySelector("#humid");
+  changeHumidity.innerHTML = currentHumidity;
+  let currentWind = Math.round(response.data.wind.speed);
+  let changeWind = document.querySelector("#wind");
+  changeWind.innerHTML = currentWind;
+  let currentWeather = response.data.weather[0].description;
+  let changeWeather = document.querySelector("#weather");
+  changeWeather.innerHTML = currentWeather;
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let currentCity = document.querySelector("#city");
+  let cityInput = document.querySelector("#city-input");
+  currentCity.innerHTML = cityInput.value;
+
+  let apiKey = "b57c2e5547d81a590a03baa24d71677e";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
+
+let form = document.querySelector("form");
+form.addEventListener("submit", handleSubmit);
+
+function handleCurrentPosition(response) {
+  let temperature = Math.round(response.data.main.temp);
+  let cityCurrentButton = document.querySelector("#city");
+  let changeTempCurrentCity = document.querySelector("#temp");
+  cityCurrentButton.innerHTML = response.data.name;
+  changeTempCurrentCity.innerHTML = temperature;
+}
+
+function getPosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "b57c2e5547d81a590a03baa24d71677e";
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(handleCurrentPosition);
+}
+navigator.geolocation.getCurrentPosition(getPosition);
+
+//let currentButton = document.querySelector("#current-location");
+//currentButton.addEventListener("click", handleCurrentPosition);
+
+//function handleClickCF() {
+//  let convert = document.querySelector("#temp");
+//  convert.innerHTML = "66";
+//}
+
+//let fahrenheit = document.querySelector("#fahrenheit");
+//fahrenheit.addEventListener("click", handleClickCF);
+
+//function handleClickFC() {
+//  let convertion = document.querySelector("#temp");
+// convertion.innerHTML = "19";
+//}
+
+//let celcius = document.querySelector("#celcius");
+//celcius.addEventListener("click", handleClickFC);
