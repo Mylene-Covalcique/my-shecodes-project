@@ -46,10 +46,15 @@ span.date-time {
   left: -15px;
 }
 
+#city {
+  text-transform: capitalize;
+}
+
 #weather {
   position: relative;
   left: -49px;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 span.humidity {

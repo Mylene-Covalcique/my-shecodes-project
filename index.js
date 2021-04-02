@@ -29,6 +29,7 @@ if (minute < 10) {
 }
 
 function showTemperature(response) {
+  console.log(response.data);
   let currentTemp = Math.round(response.data.main.temp);
   let changeTemp = document.querySelector("#temp");
   changeTemp.innerHTML = currentTemp;
@@ -41,6 +42,11 @@ function showTemperature(response) {
   let currentWeather = response.data.weather[0].description;
   let changeWeather = document.querySelector("#weather");
   changeWeather.innerHTML = currentWeather;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function handleSubmit(event) {
