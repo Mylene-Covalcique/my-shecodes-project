@@ -93,3 +93,13 @@ span.wind {
   color: #ede05a;
   font-size: 15px;
 }
+
+.weather-temp .active {
+  color: #c4a99f;
+  cursor: default;
+  text-decoration: none;
+}
+
+.weather-temp .active:hover {
+  text-decoration: none;
+}
