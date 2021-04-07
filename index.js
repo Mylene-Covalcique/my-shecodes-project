@@ -16,12 +16,16 @@ dayEdit.innerHTML = `${day}`;
 
 let hourEdit = document.querySelector("#hour");
 let hour = now.getHours();
+hourEdit.innerHTML = `${hour}`;
+
+let minuteEdit = document.querySelector("#minutes");
+let minute = now.getMinutes();
+minuteEdit.innerHTML = `${minute}`;
+
 if (hour < 10) {
   hourEdit.innerHTML = `0${hour}`;
 }
 
-let minuteEdit = document.querySelector("#minutes");
-let minute = now.getMinutes();
 if (minute < 10) {
   minuteEdit.innerHTML = `0${minute}`;
 }
