@@ -7,7 +7,8 @@ body {
 h1,
 form,
 #city,
-.weather-temp {
+.weather-temp,
+#weather-forecast {
   text-align: center;
 }
 
@@ -52,7 +53,7 @@ p {
   left: 55px;
 }
 
-.temp {
+.weather-forecast-temperatures {
   margin-top: 15px;
 }
 

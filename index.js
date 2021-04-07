@@ -107,3 +107,28 @@ function displayTempInC(event) {
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayTempInC);
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+              <div class="weather-forecast-date">
+                <p class="day">${day}</p>
+              </div>
+              <i class="fas fa-sun"></i>
+              <div class="weather-forecast-temperatures">
+                <span class="weather-forecast-temp-max">20°</span>
+                <span class="weather-forecast-temp-min">15°</span>
+              </div> </div>
+              `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
