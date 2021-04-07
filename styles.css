@@ -6,7 +6,8 @@ body {
 
 h1,
 form,
-.col {
+#city,
+.weather-temp {
   text-align: center;
 }
 
@@ -37,34 +38,18 @@ p {
   border-radius: 20px;
 }
 
-.col-6 {
-  text-align: center;
-}
-
-span.date-time {
-  position: relative;
-  left: -15px;
-}
-
 #city {
   text-transform: capitalize;
 }
 
 #weather {
-  position: relative;
-  left: -49px;
   font-weight: bold;
   text-transform: capitalize;
 }
 
-span.humidity {
+.weather-elements {
   position: relative;
-  left: -22px;
-}
-
-span.wind {
-  position: relative;
-  left: -25px;
+  left: 55px;
 }
 
 .temp {

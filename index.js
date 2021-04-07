@@ -12,20 +12,18 @@ let days = [
 
 let dayEdit = document.querySelector("#day");
 let day = days[now.getDay()];
-dayEdit.innerHTML = `<strong>${day}</strong>`;
+dayEdit.innerHTML = `${day}`;
 
 let hourEdit = document.querySelector("#hour");
 let hour = now.getHours();
-hourEdit.innerHTML = `<strong>${hour}</strong>`;
 if (hour < 10) {
-  hour = `0${hour}`;
+  hourEdit.innerHTML = `0${hour}`;
 }
 
 let minuteEdit = document.querySelector("#minutes");
 let minute = now.getMinutes();
-minuteEdit.innerHTML = `<strong>${minute}</strong>`;
 if (minute < 10) {
-  minute = `0${minute}`;
+  minuteEdit.innerHTML = `0${minute}`;
 }
 
 function showTemperature(response) {
