@@ -39,7 +39,9 @@ function formatDay(timestamp) {
 }
 
 function showTemperature(response) {
-  console.log(response.data);
+  let currentCity = document.querySelector("#city");
+  currentCity.innerHTML = response.data.name;
+
   celsiusTemperature = response.data.main.temp;
   let currentTemp = Math.round(response.data.main.temp);
   let changeTemp = document.querySelector("#temp");
@@ -160,3 +162,11 @@ function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
+
+function search(city) {
+  let apiKey = "b57c2e5547d81a590a03baa24d71677e";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
+
+search("Paris");
