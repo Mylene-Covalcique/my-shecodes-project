@@ -36,7 +36,8 @@ p {
 
 .card-body {
   background-color: #edf7f4;
-  border-radius: 20px;
+  border-radius: 5px;
+  background: linear-gradient(#edf7f4 65%, #85a39a);
 }
 
 #city {
@@ -88,4 +89,14 @@ p {
 
 .weather-temp .active:hover {
   text-decoration: none;
+}
+
+.weather-forecast-temperatures {
+  text-align: center;
+  font-size: 15px;
+}
+
+.weather-forecast-temp-min {
+  opacity: 0.6;
+  margin-left: 5px;
 }
