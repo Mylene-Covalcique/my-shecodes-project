@@ -58,27 +58,10 @@ p {
   margin-top: 15px;
 }
 
-.fa-cloud-sun {
-  font-size: 100px;
-}
-
-.fa-sun,
-.fa-cloud,
-.fa-cloud-showers-heavy {
-  font-size: 36px;
-}
-
 #CF {
   font-size: 15px;
   position: relative;
   top: -11px;
-}
-
-#code-line {
-  position: relative;
-  left: 430px;
-  color: #ede05a;
-  font-size: 15px;
 }
 
 .weather-temp .active {
@@ -99,4 +82,19 @@ p {
 .weather-forecast-temp-min {
   opacity: 0.6;
   margin-left: 5px;
+}
+
+.github-link {
+  color: #ede05a;
+}
+
+.github-link:hover {
+  color: #ede05a;
+}
+
+#code-line {
+  position: relative;
+  left: 430px;
+  color: #ede05a;
+  font-size: 15px;
 }
